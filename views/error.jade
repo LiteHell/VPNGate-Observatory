@@ -1,0 +1,15 @@
+extends ./bootstrap.jade
+
+block HeadContent
+  title 오류
+  link(rel="stylesheet", href="/s/css/cover.css")
+block Content
+  div.site-wrapper
+    div.site-wrapper-inner
+      div.inner.cover
+        h1.cover-heading 오류
+        p.lead 오류가 발생했습니다. 다음 정보를 관리자에게 알려주세요.
+        p.lead!= "<strong>Identifical String</strong> : " + identifical + "<br>" + "<strong>Timestamp</strong> : " + timestamp
+      div.mastfoot
+        div.inner
+          p By. LiteHell

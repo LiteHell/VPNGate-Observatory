@@ -1,0 +1,43 @@
+extends ./bootstrap.jade
+
+block HeadContent
+  title VPNGate 관측소
+  meta(name="author", content="LiteHell")
+  script(defer="", src="/s/js/search.js")
+
+block Content
+  div.container
+    div.page-header
+      h1 이 사이트는 무슨 사이트인가요?
+    p.
+      VPNGate를 아십니까? VPNGate는 Tor처럼 자원봉사자들이 VPN 서버를 제공하는 프로젝트입니다.
+      이 프로젝트의 특성상 VPNGate VPN 서버는 갑자기 사라지다가 갑자기 나타날 수도 있습니다.
+      이러한 특성상 트롤링에 사용되는 경우 IP 우회 입증이 매우 어려울 수도 있습니다.
+      VPNGate 관측소는 이러한 경우에 당신을 도와줍니다.
+    div.page-header
+      h1 API 안내
+    p!= "<code>http://vpngate-observatory.litehell.info/search/IP주소</code> 하시면 json형태로 응답이 나옵니다."
+    div.page-header
+      h1!= "검색 <small>VPNGate VPN IP였는지, 언제 그랬는지 검색합니다.</small>"
+    p.
+      2015년 11월 15일 오후 1시 50분부터의 기록만 검색됩니다.
+      기록은 5초 간격이며, IP 주소로만 검색하실 수 있습니다.
+    div.input-group
+      input.form-control(placeholder="IP 주소", type="text", id="query")
+      span.input-group-btn
+        button.btn.btn-default(type="button",id="search") 검색
+    div#resultDiv(style={display: 'none'})
+      div.page-header
+        h1 검색 결과
+      p#processing .
+        진행중입니다.
+      table.table.table-striped#result(style={display: 'none'})
+        thead
+          tr
+            th 호스트명
+            th 국가명 (영어)
+            th 가동시간
+            th 운영자
+            th 메세지
+            th 확인당시 날짜와 시각
+        tbody

@@ -1,0 +1,4 @@
+node_modules/
+errors/*.log
+db.db
+db.db-journal
