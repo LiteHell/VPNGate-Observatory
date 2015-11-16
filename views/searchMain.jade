@@ -16,21 +16,24 @@ block Content
       VPNGate 관측소는 이러한 경우에 당신을 도와줍니다.
     div.page-header
       h1 API 안내
-    p!= "<code>http://vpngate-observatory.litehell.info/search/IP주소</code> 하시면 json형태로 응답이 나옵니다."
+    p!= "<code>http://a.observatorysite.name/json/IP주소</code> 하시면 json형태로 응답이 나옵니다."
     div.page-header
       h1!= "검색 <small>VPNGate VPN IP였는지, 언제 그랬는지 검색합니다.</small>"
     p.
       2015년 11월 15일 오후 1시 50분부터의 기록만 검색됩니다.
       기록은 5초 간격이며, IP 주소로만 검색하실 수 있습니다.
-    div.input-group
-      input.form-control(placeholder="IP 주소", type="text", id="query")
-      span.input-group-btn
-        button.btn.btn-default(type="button",id="search") 검색
-    div#resultDiv(style={display: 'none'})
+    form(action="/search", method="get", accpet-charset="UTF-8", target="_self")
+      div.input-group
+        input.form-control(placeholder="IP 주소", type="text", name="q", id="query")
+        span.input-group-btn
+          button.btn.btn-default(type="submit") 검색
+    if result
       div.page-header
         h1 검색 결과
-      p#processing 진행중입니다.
-      table.table.table-striped#result(style={display: 'none'})
+      p.
+        2015년 11월 15일 오후 1시 50분부터의 기록만 검색됩니다.
+        기록은 5초 간격이며, IP 주소로만 검색하실 수 있습니다.
+      table.table.table-striped
         thead
           tr
             th 호스트명
@@ -40,3 +43,7 @@ block Content
             th 메세지
             th 확인당시 날짜와 시각
         tbody
+          each row in result
+            tr
+              each col in row
+                td= col

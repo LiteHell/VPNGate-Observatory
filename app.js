@@ -14,7 +14,8 @@ app.get('/', function(req, res) {
 })
 var se = require('./handlers/searchHandler.js');
 se.setDatabase(db);
-app.get('/search/*', se.handler)
+app.get('/json/*', se.jsonHandler)
+app.get('/search', se.htmlHandler)
 
 // set Error Handler
 app.use(require('./handlers/errorHandler.js'));

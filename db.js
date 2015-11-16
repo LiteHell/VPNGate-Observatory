@@ -3,9 +3,12 @@ var db = new sqlite3.Database("./db.db");
 var request = require('request');
 
 db.exec("BEGIN TRANSACTION;" +
-  "CREATE TABLE IF NOT EXISTS vpns (HostName,IP,Score,Ping,Speed,CountryLong,CountryShort,NumVpnSessions,Uptime,TotalUsers,TotalTraffic,LogType,Operator,Message,OpenVPN_ConfigData_Base64, archivedAt);" +
+  "CREATE TABLE IF NOT EXISTS vpns (HostName,IP TEXT,Score INTEGER,Ping INTEGER,Speed INTEGER,CountryLong,CountryShort,NumVpnSessions,Uptime,TotalUsers,TotalTraffic,LogType,Operator,Message,OpenVPN_ConfigData_Base64, archivedAt);" +
   "CREATE TABLE IF NOT EXISTS resLog (hasError, resCode, timestamp);" +
-  "COMMIT TRANSACTION;",
+  "CREATE INDEX IF NOT EXISTS vpnIPIndex ON vpns(IP);" +
+  "CREATE INDEX IF NOT EXISTS vpntsIndex ON vpns(archivedAt);" +
+  "COMMIT TRANSACTION;" +
+  "ANALYZE vpns;",
   function(err) {
     if (err) throw err;
   });
