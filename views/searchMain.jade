@@ -30,20 +30,23 @@ block Content
     if result
       div.page-header
         h1 검색 결과
-      p.
-        2015년 11월 15일 오후 1시 50분부터의 기록만 검색됩니다.
-        기록은 5초 간격이며, IP 주소로만 검색하실 수 있습니다.
-      table.table.table-striped
-        thead
-          tr
-            th 호스트명
-            th 국가명 (영어)
-            th 가동시간
-            th 운영자
-            th 메세지
-            th 확인당시 날짜와 시각
-        tbody
-          each row in result
+      if result.length != 0
+        p.
+          2015년 11월 15일 오후 1시 50분부터의 기록만 검색됩니다.
+          기록은 5초 간격이며, IP 주소로만 검색하실 수 있습니다.
+        table.table.table-striped
+          thead
             tr
-              each col in row
-                td= col
+              th 호스트명
+              th 국가명 (영어)
+              th 가동시간
+              th 운영자
+              th 메세지
+              th 확인당시 날짜와 시각
+          tbody
+            each row in result
+              tr
+                each col in row
+                  td= col
+      else if result.length == 0
+        p 검색 결과가 없습니다.
