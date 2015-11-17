@@ -1,13 +1,17 @@
 {
   "name": "vpngate_observatory",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "archive vpngate vpn list every few minutes and search ip address from vpn list",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "LiteHell",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LiteHell/VPNGate-Observatory.git"
+  },
   "dependencies": {
     "express": "^4.13.3",
     "jade": "^1.11.0",
